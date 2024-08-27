@@ -13,7 +13,8 @@
     <div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></div>
     
     <div class="post">
-        <img th:src="${post.imageUrl}" alt="Post Image" style="width: 130px; height: 150px; margin-right: 15px;"/>
+        <img th:src="${post.imageUrl != null ? post.imageUrl : '/images/val.jpeg'}" 
+             alt="Post Image"/>
         <div>
             <h2 th:text="${post.title}">Title</h2>
             <p th:text="${post.body}">body text</p>

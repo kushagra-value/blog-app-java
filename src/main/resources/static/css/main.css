@@ -62,7 +62,7 @@ body {
     width: 90%;
     margin: auto;
     background-color: rgb(183, 194, 226);
-    min-height: 350px;
+    min-height: 450px;
     margin-bottom: 100px;
     border-radius: 20px;
 }
@@ -94,6 +94,7 @@ body {
     background-color: rgb(183, 194, 226);
     margin-top: 80px;
     margin-bottom: 80px;
+    padding-bottom: 35px;
     border-radius: 20px;
     /* padding: 10px; */
     padding-top: 40px;
@@ -153,17 +154,17 @@ body {
 }
 
 .post img {
-    width: 130px;
-    height: 150px;
+    width: 170px;
+    height: 180px;
     margin-right: 20px;
     margin-top: 60px;
     display: block;
 }
 
 .edit-button {
-    /* text-align: center; Center-align the button within its container */
+    text-align: right;
     margin-top: 20px; /* Space above the button */
-    margin-left: 465px;
+    /* margin-left: 465px; */
     width: 100%; /* Take full width of the parent container */
 }
 
