@@ -34,7 +34,6 @@
             <p>No comments yet. Be the first to comment!</p>
         </div>
         <div class="comment" th:each="comment : ${post.comments}">
-            <h5 th:text="'Commented on ' + ${#dates.format(post.creationDate, 'yyyy-MM-dd')} + ' by ' + ${comment.user.username}">Comment date and by whom</h5>
             <p th:text="${comment.body}">Body</p>
         </div>
     </div>
