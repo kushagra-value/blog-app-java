@@ -11,7 +11,7 @@
     <groupId>org.martynas</groupId>
     <artifactId>spring-boot-blog-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>spring-boot-blog-app</name>
     <description>Demo Blog app project for Spring Boot and MVC fw</description>
 

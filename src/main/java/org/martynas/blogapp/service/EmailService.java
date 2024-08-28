@@ -24,13 +24,19 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
         helper.setTo(to);
-        helper.setSubject("Welcome to Our Blog!");
+        helper.setSubject("Welcome to Blog ValueBound!");
 
-        // Load email template
-        String content = "<h1>Welcome, " + username + "!</h1>"
-                       + "<p>Thank you for signing up. We're glad to have you with us.</p>";
-        
+        // Load email template with the logo and login link
+        String content = "<h1>Welcome to Blog ValueBound, " + username + "!</h1>"
+                       + "<p>Thank you for signing up. We're glad to have you with us.</p>"
+                       + "<p>To login, please <a href='http://localhost:9080/login'>click here</a>.</p>"
+                       + "<p><img src='cid:logoImage' alt='Blog ValueBound'></p>";
+
         helper.setText(content, true);
+
+        // Attach the logo image
+        ClassPathResource logo = new ClassPathResource("static/images/val.jpeg");
+        helper.addInline("logoImage", logo);
 
         mailSender.send(message);
     }
