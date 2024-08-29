@@ -11,7 +11,7 @@
     <!-- Display Success Message -->
     <div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></div>
     
-    <div class="post">
+    <div class="postmain">
         <img th:src="${post.imageUrl != null ? post.imageUrl : '/images/val.jpeg'}" 
              alt="Post Image"/>
         <div>

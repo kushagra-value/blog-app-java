@@ -150,8 +150,25 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: post-fade-in 1.5s ease;
+    overflow: hidden;
+    height: 300px;
 }
 
+/* Posts */
+.postmain {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: post-fade-in 1.5s ease;
+}
 @keyframes post-fade-in {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -191,6 +208,54 @@ body {
 }
 
 .post p {
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    line-clamp: 7;
+    box-orient: vertical;
+
+}
+
+
+.postmain:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.postmain img {
+    width: 150px;
+    min-width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.postmain:hover img {
+    transform: scale(1.05);
+}
+
+.postmain-content {
+    flex: 1;
+}
+
+.postmain h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.postmain:hover h2 {
+    color: #4CAF50;
+}
+
+.postmain p {
     color: #555;
     margin-bottom: 10px;
     line-height: 1.6;
@@ -383,6 +448,10 @@ a:hover {
     .post {
         flex-direction: column;
     }
+    .postmain {
+        flex-direction: column;
+    }
+    
 
     .topnav a {
         float: none;
@@ -417,8 +486,17 @@ a:hover {
         height: auto;
         margin-bottom: 10px;
     }
+    .postmain img {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        margin-bottom: 10px;
+    }
 
     .post-content {
+        text-align: center;
+    }
+    .postmain-content {
         text-align: center;
     }
 }
