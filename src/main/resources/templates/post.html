@@ -1,50 +1,53 @@
+<!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<div th:replace="fragments/head :: head"></div>
-<body>
-
-<div th:replace="fragments/header :: header"></div>
-
-<div class="container">
-
-    <!-- Display Success Message -->
-    <div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></div>
     
-    <div class="postmain">
-        <img th:src="${post.imageUrl != null ? post.imageUrl : '/images/val.jpeg'}" 
-             alt="Post Image"/>
-        <div>
-            <h2 th:text="${post.title}">Title</h2>
-            <p th:text="${post.body}">body text</p>
-            <div class="edit-button" sec:authorize="isAuthenticated()" th:if="${isOwner}">
-                <a th:href="@{'/editPost/{id}'(id=${post.id})}">
-                    <button class="green-btn blue-btn" type="button">Edit</button>
+    <div th:replace="fragments/head :: head"></div>
+    
+    <body>
+
+        <div th:replace="fragments/header :: header"></div>
+
+        <div class="container">
+
+            <!-- Display Success Message -->
+            <div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></div>
+            
+            <div class="postmain">
+                <img th:src="${post.imageUrl != null ? post.imageUrl : '/images/val.jpeg'}" 
+                     alt="Post Image"/>
+                <div>
+                    <h2 th:text="${post.title}">Title</h2>
+                    <!-- Render the body as HTML -->
+                    <p th:utext="${post.body}"></p>
+                    <div class="edit-button" sec:authorize="isAuthenticated()" th:if="${isOwner}">
+                        <a th:href="@{'/editPost/{id}'(id=${post.id})}">
+                            <button class="green-btn blue-btn" type="button">Edit</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comments">
+                <h2>Comments</h2>
+                <div th:if="${#lists.isEmpty(post.comments)}">
+                    <p>No comments yet. Be the first to comment!</p>
+                </div>
+                <div class="comment" th:each="comment : ${post.comments}">
+                    <!-- Render each comment's body as HTML -->
+                    <p th:utext="${comment.body}"></p>
+                </div>
+            </div>
+            
+            <div class="align-center">
+                <a th:href="@{'/comment/{id}'(id=${post.id})}">
+                    <button class="green-btn" type="button">Comment Post</button>
                 </a>
             </div>
-    
         </div>
 
-    </div>
-    
-    <div class="comments">
-        <h2>Comments</h2>
-        <div th:if="${#lists.isEmpty(post.comments)}">
-            <p>No comments yet. Be the first to comment!</p>
-        </div>
-        <div class="comment" th:each="comment : ${post.comments}">
-            <p th:text="${comment.body}">Body</p>
-        </div>
-    </div>
-    
-    <div class="align-center">
-        <a th:href="@{'/comment/{id}'(id=${post.id})}">
-            <button class="green-btn" type="button">Comment Post</button>
-        </a>
-    </div>
-</div>
+        <div th:replace="fragments/footer :: footer"></div>
 
-<div th:replace="fragments/footer :: footer"></div>
-
-</body>
+    </body>
 </html>

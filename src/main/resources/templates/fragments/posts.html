@@ -1,11 +1,13 @@
 <div th:fragment="posts(posts)">
     <div class="posts_wrapper">
         <div class="post" th:each="post : ${posts}">
-            <img th:src="${post.imageUrl != null ? post.imageUrl : '/images/val.jpeg'}" 
-                 alt="Post Image"/>
+            <img th:src="${post.imageUrl != null ? post.imageUrl : '/images/val.jpeg'}" alt="Post Image"/>
             <div>
-                <h2><a th:href="@{'/post/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
-                <p th:text="${post.body}">body text</p>
+                <h2>
+                    <a th:href="@{'/post/' + ${post.id}}" th:text="${post.title}">Title</a>
+                </h2>
+                <!-- Render the post body as HTML -->
+                <p th:utext="${post.body}">body text</p>
                 <div class="edit-button" sec:authorize="isAuthenticated()" th:if="${isOwner}">
                     <a th:href="@{'/editPost/{id}'(id=${post.id})}">
                         <button class="green-btn blue-btn" type="button">Edit</button>
